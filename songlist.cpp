@@ -1,0 +1,76 @@
+#include <iostream>
+
+#include "songlist.h"
+
+using namespace std;
+
+void SongList::create(Song song) {
+    node *temp=new node;
+    temp->data = song;
+    temp->next=NULL;
+    
+    if(head==NULL) {
+        head=temp;
+        tail=temp;
+        temp=NULL;
+    } else {	
+        tail->next=temp;
+        tail=temp;
+    }
+}
+
+void SongList::list() {
+    node *current = new node;
+    current = head;
+
+    int count = 1;
+
+    if(current == NULL) {
+        cout << "Can't found a song because your songlist is empty.\n"; 
+    }
+
+    while(current != NULL) {
+      if(current->data.getTitle().empty() && count == 1) {
+          cout << "Can't found a song because your songlist is empty.\n"; 
+      }else{
+          cout << count << ": " << current-> data.getTitle() << " - " << current-> data.getSongwriter() << endl;
+      }    
+
+      current = current->next;
+
+      count += 1;
+    }
+}
+
+void SongList::add(Song song) {
+    node *temp = new node;
+    temp->data = song;
+    temp->next = head;
+    head = temp;
+}
+
+void SongList::remove(string songTitle) {
+    node *current=new node;
+    node *previous=new node;
+
+    current=head;
+
+    while(current != NULL) {
+        string title = current->data.getTitle();
+        
+        if((title.compare(songTitle)) == 0) { 
+            break; 
+        } else {
+            previous = current; 
+            current = current->next;
+        }
+    }
+
+    if(current == NULL) {
+        cout << "Can't remove value: no match found.\n"; 
+    } else {
+        cout << "Deleting: " << current->data.getTitle() << "\n";
+        previous->next = current->next;
+        delete current;
+    }
+}

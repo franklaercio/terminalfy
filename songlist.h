@@ -10,12 +10,12 @@ struct node {
     node *next;
 };	
 
-class Playlist {
+class SongList {
     private:
         node *head;
         node *tail;
     public:
-        Playlist() {
+        SongList() {
             head = NULL;
             tail = NULL;
         }
@@ -23,6 +23,8 @@ class Playlist {
         void create(Song song);
 
         void add(Song song);
+
+        void remove(string songTitle);
 
         void list();
 };	

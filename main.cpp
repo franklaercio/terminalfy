@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "song.h"
-#include "playlist.h"
+#include "songlist.h"
 
 using namespace std;
 
@@ -15,13 +15,14 @@ int main() {
     bool exit = false;
     int option;
     string title, songwiter;
-    Playlist *playlist = new Playlist();
+    SongList *songList = new SongList();
 
     do{
-        cout << "--------------MENU---------------" << endl;
+        cout << "--------MENU---------------" << endl;
         cout << "[0] - EXIT" << endl;
         cout << "[1] - ADD SONG" << endl;
-        cout << "[2] - VIEW PLAYLIST" << endl;
+        cout << "[2] - DELETE SONG" << endl;
+        cout << "[3] - VIEW ALL SONGS" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -45,12 +46,22 @@ int main() {
                 song->setTitle(title);
                 song->setSongwriter(songwiter);
 
-                playlist-> add(*song);
+                songList-> add(*song);
+                break;  
+            } 
+            case 2: {
+                cout << "--------REMOVE SONG-----------------" << endl;
+                cout << "Type a title: ";
+                cin >> ws;
+                getline(cin,title); 
+                cout << endl;
+
+                songList-> remove(title);
                 break;  
             }   
-            case 2: {
+            case 3: {
                 cout << "--------LIST ALL SONG-------------" << endl;
-                playlist-> list();
+                songList-> list();
                 break;
             }
             default:
