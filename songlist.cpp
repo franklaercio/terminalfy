@@ -26,12 +26,12 @@ void SongList::list() {
     int count = 1;
 
     if(current == NULL) {
-        cout << "Can't found a song because your songlist is empty.\n"; 
+        cout << "Can't found a song because your songlist is empty." << endl; 
     }
 
     while(current != NULL) {
       if(current->data.getTitle().empty() && count == 1) {
-          cout << "Can't found a song because your songlist is empty.\n"; 
+          cout << "Can't found a song because your songlist is empty." << endl; 
       }else{
           cout << count << ": " << current-> data.getTitle() << " - " << current-> data.getSongwriter() << endl;
       }    
@@ -40,6 +40,32 @@ void SongList::list() {
 
       count += 1;
     }
+}
+
+Song SongList::findSong(string songName) {
+    node *current = new node;
+    current = head;
+
+    int count = 1;
+
+    Song *song = new Song();
+
+    if(current == NULL) {
+        cout << "Can't found a song because your songlist is empty." << endl; 
+        return *song;
+    }
+
+    while(current != NULL) {
+      if(current->data.getTitle().compare(songName) == 0) {
+          *song = current->data;
+          return *song;
+      }   
+
+      current = current->next;
+    }
+
+    cout << "Can't found the music." << endl;
+    return *song;
 }
 
 void SongList::add(Song song) {
@@ -67,9 +93,9 @@ void SongList::remove(string songTitle) {
     }
 
     if(current == NULL) {
-        cout << "Can't remove value: no match found.\n"; 
+        cout << "Can't remove value: no match found." << endl; 
     } else {
-        cout << "Deleting: " << current->data.getTitle() << "\n";
+        cout << "Deleting: " << current->data.getTitle() << endl;
         previous->next = current->next;
         delete current;
     }

@@ -4,7 +4,10 @@ song.o: song.cpp song.h
 songlist.o: songlist.cpp songlist.h
 	g++ songlist.cpp -c
 
-terminalfy: main.cpp song.o songlist.o
-	g++ main.cpp song.o songlist.o -o terminalfy
+playlist.o: playlist.cpp playlist.h
+	g++ playlist.cpp -c
+
+terminalfy: main.cpp song.o songlist.o playlist.o
+	g++ main.cpp song.o songlist.o playlist.o -o terminalfy
 
 all: terminalfy

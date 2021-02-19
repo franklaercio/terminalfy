@@ -12,9 +12,11 @@ class Song {
 
     public:
         string getTitle();
+
         void setTitle(string title);
 
         string getSongwriter();
+        
         void setSongwriter(string songwriter);
 };
 

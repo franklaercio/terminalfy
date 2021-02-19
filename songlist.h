@@ -1,5 +1,5 @@
-#ifndef PLAYLIST_H
-#define PLAYLIST_H
+#ifndef SONGLIST_H
+#define SONGLIST_H
 
 #include "song.h"
 
@@ -21,6 +21,8 @@ class SongList {
         }
         
         void create(Song song);
+
+        Song findSong(string songName);
 
         void add(Song song);
 
