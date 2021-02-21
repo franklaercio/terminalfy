@@ -86,6 +86,34 @@ void PlayList::listAllMusicByPlaylistName(string playlistName) {
     }
 }
 
-SongList PlayList::getSongList() {
-    return *this->songList->songList;
+string PlayList::getName() {
+    return this->name;
+}
+
+void PlayList::setName(string name){
+    this->name = name;
+}
+
+playlistNode PlayList::findPlaylistNode(string playlistName) {
+    playlistNode *current = new playlistNode;
+    current = head;
+
+    playlistNode *playlist = new playlistNode();
+
+    if(current == NULL) {
+        cout << "Can't found a song because your songlist is empty." << endl; 
+        return *playlist;
+    }
+
+    while(current != NULL) {
+      if(current->name.compare(playlistName) == 0) {
+          playlist = current;
+          return *playlist;
+      }   
+
+      current = current->next;
+    }
+
+    cout << "Can't found the music." << endl;
+    return *playlist;
 }

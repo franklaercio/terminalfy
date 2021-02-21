@@ -8,6 +8,6 @@ playlist.o: playlist.cpp playlist.h
 	g++ playlist.cpp -c
 
 terminalfy: main.cpp song.o songlist.o playlist.o
-	g++ main.cpp song.o songlist.o playlist.o -o terminalfy
+	g++ -Wall main.cpp song.o songlist.o playlist.o -o terminalfy
 
 all: terminalfy

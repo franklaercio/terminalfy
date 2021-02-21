@@ -41,9 +41,7 @@ class PlayList {
 
         void setName(string name);
 
-        SongList getSongList();
-
-        void setSongList();
+        playlistNode findPlaylistNode(string playlistName);
 };	
   
 #endif

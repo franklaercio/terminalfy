@@ -20,15 +20,17 @@ int main() {
     PlayList *playList = new PlayList();
 
     do{
-        cout << "--------MENU---------------" << endl;
+        cout << "----------> MENU <----------" << endl;
         cout << "[0] - EXIT" << endl;
         cout << "[1] - ADD SONG" << endl;
         cout << "[2] - DELETE SONG" << endl;
         cout << "[3] - VIEW ALL SONGS" << endl;
         cout << "[4] - FIND A SONG" << endl;
         cout << "[5] - NEW PLAYLIST" << endl;
-        cout << "[6] - VIEW ALL PLAYLIST" << endl;
-        cout << "[7] - LIST ALL MUSIC BY PLAYLIST" << endl;
+        cout << "[6] - ADD MUSIC TO PLAYLIST" << endl;
+        cout << "[7] - REMOVE MUSIC OF PLAYLIST" << endl;
+        cout << "[8] - VIEW ALL PLAYLIST" << endl;
+        cout << "[9] - LIST ALL MUSIC BY PLAYLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -38,7 +40,7 @@ int main() {
                 exit = true;
                 break;
             } case 1: {
-                cout << "--------ADD SONG-----------------" << endl;
+                cout << "----------> ADD SONG <----------" << endl;
 
                 cout << "Type a title: ";
                 cin >> ws; 
@@ -56,7 +58,7 @@ int main() {
                 songList-> add(*song);
                 break;  
             } case 2: {
-                cout << "--------REMOVE SONG-----------------" << endl;
+                cout << "----------> REMOVE SONG <----------" << endl;
 
                 cout << "Type a title: ";
                 cin >> ws;
@@ -66,11 +68,11 @@ int main() {
                 songList-> remove(title);
                 break;  
             } case 3: {
-                cout << "--------LIST ALL SONG-------------" << endl;
+                cout << "----------> LIST ALL SONG <----------" << endl;
                 songList-> list();
                 break;
             } case 4: {
-                cout << "--------FIND A SONG-------------" << endl;
+                cout << "----------> FIND A SONG <----------" << endl;
 
                 cout << "Type a title: ";
                 cin >> ws;
@@ -84,60 +86,79 @@ int main() {
 
                 break;
             } case 5: {
-                cout << "--------NEW PLAYLIST-------------" << endl;
+                cout << "----------> NEW PLAYLIST <----------" << endl;
 
-                bool addingMusic = true;
-                int playListOption = 1;
                 SongList *playlistMusic = new SongList();
 
                 cout << "Type a playlist name: ";
                 cin >> ws;
                 getline(cin,namePlaylist); 
 
-                do{
-                    cout << "[0] - FINISH" << endl;
-                    cout << "[1] - ADD SONG" << endl;
-                    cout << "Type an option: ";
-                    cin >> playListOption;
-                    cout << endl;
-
-                    switch (playListOption) {
-                        case 0: {
-                            addingMusic = false;
-                            break;
-                        } case 1:  {
-                            cout << "Type a music title: ";
-                            cin >> ws;
-                            getline(cin,title);
-
-                            Song *song = new Song(); 
-                            *song = songList->findSong(title);
-
-                            if(!song->getTitle().empty()) {
-                                playlistMusic->add(*song);
-                            }
-
-                            break;    
-                        } default: 
-                            cout << "ERROR: type a valid option!" << endl; 
-                    }
-                }while(addingMusic);
-
-                cout << playlistMusic << endl;
-
-                playlistMusic->list();
-
                 playList->add(namePlaylist, playlistMusic);
 
                 break;
             } case 6: {
-                cout << "--------VIEW ALL PLAYLIST-------------" << endl;
+                cout << "----------> ADD MUSIC TO PLAYLIST <----------" << endl;
+
+                cout << "Type a playlist name: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode list = playList->findPlaylistNode(namePlaylist);
+
+                if(!list.name.empty()) {
+                    cout << "Type a music title: ";
+                    cin >> ws;
+                    getline(cin,title);
+
+                    Song *song = new Song(); 
+                    *song = songList->findSong(title);
+
+                    if(!song->getTitle().empty()) {
+                        list.songList->add(*song);
+                    }else{
+                        cout << "Sorry! Can't found a song: " + title << endl;
+                    }
+                } else {
+                    cout << "Sorry! Can't found a playlist: " + namePlaylist << endl;
+                }
+
+                break;
+            } case 7: {
+                cout << "----------> REMOVE MUSIC OF PLAYLIST <----------" << endl;
+
+                cout << "Type a playlist name: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode list = playList->findPlaylistNode(namePlaylist);
+
+                if(!list.name.empty()) {
+                    cout << "Type a music title: ";
+                    cin >> ws;
+                    getline(cin,title);
+
+                    Song *song = new Song(); 
+                    *song = songList->findSong(title);
+
+                    if(!song->getTitle().empty()) {
+                        list.songList->remove(title);
+                    }else{
+                        cout << "Sorry! Can't found a song: " + title << endl;
+                    }
+                } else {
+                    cout << "Sorry! Can't found a playlist: " + namePlaylist << endl;
+                }
+
+                break;
+            } case 8: {
+                cout << "----------> VIEW ALL PLAYLIST <----------" << endl;
 
                 playList->listAll();
                 
                 break;
-            } case 7: {
-                cout << "--------LIST ALL MUSIC BY PLAYLIST-------------" << endl;
+            } case 9: {
+                cout << "----------> LIST ALL MUSIC BY PLAYLIST <----------" << endl;
 
                 cout << "Type a playlist name: ";
                 cin >> ws;
