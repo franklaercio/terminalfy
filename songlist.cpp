@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/**
+ *  Function for create the songlist node
+ *  
+ *  @return
+*/
 void SongList::create(Song song) {
     node *temp = new node;
     temp->data = song;
@@ -19,6 +24,11 @@ void SongList::create(Song song) {
     }
 }
 
+/**
+ *  Function for list all of music
+ *  
+ *  @return
+*/
 void SongList::list() {
     node *current = new node;
     current = head;   
@@ -42,6 +52,11 @@ void SongList::list() {
     }
 }
 
+/**
+ *  Function for find the song in songlist
+ *  
+ *  @return Song
+*/
 Song SongList::findSong(string songName) {
     node *current = new node;
     current = head;
@@ -68,6 +83,11 @@ Song SongList::findSong(string songName) {
     return *song;
 }
 
+/**
+ *  Function for add the song in songlist
+ *  
+ *  @return
+*/
 void SongList::add(Song song) {
     node *temp = new node;
     temp->data = song;
@@ -75,6 +95,11 @@ void SongList::add(Song song) {
     head = temp;
 }
 
+/**
+ *  Function for remove a song in songlist
+ *  
+ *  @return
+*/
 void SongList::remove(string songTitle) {
     node *current=new node;
     node *previous=new node;

@@ -35,8 +35,6 @@ class PlayList {
 
         void listAllMusicByPlaylistName(string playlistName);
 
-        SongList getSongListByPlaylistName(string playlistName);
-
         string getName();
 
         void setName(string name);

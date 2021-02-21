@@ -2,6 +2,11 @@
 
 using namespace std;
 
+/**
+ *  Function for create a playlist
+ *  
+ *  @return
+*/
 void PlayList::create(string name, SongList songList) {
     playlistNode *temp = new playlistNode;
     temp->name=name;
@@ -18,6 +23,11 @@ void PlayList::create(string name, SongList songList) {
     }
 }
 
+/**
+ *  Function for list all playlist
+ *  
+ *  @return
+*/
 void PlayList::listAll() {
     playlistNode *current = new playlistNode;
     current = head;
@@ -41,6 +51,11 @@ void PlayList::listAll() {
     }
 }
 
+/**
+ *  Function for add a playlist
+ *  
+ *  @return
+*/
 void PlayList::add(string playlistName, SongList *musics) {
     playlistNode *temp = new playlistNode;
     temp->name=playlistName;
@@ -49,24 +64,11 @@ void PlayList::add(string playlistName, SongList *musics) {
     head = temp;
 }
 
-SongList PlayList::getSongListByPlaylistName(string playlistName) {
-    playlistNode *current = new playlistNode;
-    current = head;
-
-    SongList *songList = new SongList();
-
-    while(current != NULL) {
-      if(current->name.compare(playlistName) == 0)  {
-          songList = current->songList;
-          return *songList;
-      }
-
-      current = current->next;
-    }
-
-    return *songList;
-}
-
+/**
+ *  Function for list all music by name of playlist
+ *  
+ *  @return
+*/
 void PlayList::listAllMusicByPlaylistName(string playlistName) {
     playlistNode *current = new playlistNode;
     current = head;
@@ -86,14 +88,29 @@ void PlayList::listAllMusicByPlaylistName(string playlistName) {
     }
 }
 
+/**
+ *  Function for get the name of playlist
+ *  
+ *  @return string
+*/
 string PlayList::getName() {
     return this->name;
 }
 
+/**
+ *  Function for setting the name of playlist
+ *  
+ *  @return
+*/
 void PlayList::setName(string name){
     this->name = name;
 }
 
+/**
+ *  Function for find playlistnode
+ *  
+ *  @return playlistNode
+*/
 playlistNode PlayList::findPlaylistNode(string playlistName) {
     playlistNode *current = new playlistNode;
     current = head;
