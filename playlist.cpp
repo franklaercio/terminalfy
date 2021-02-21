@@ -41,11 +41,12 @@ void PlayList::listAll() {
     }
 }
 
-void PlayList::addSong(Song *song) {
-    playlistNode *current = new playlistNode;
-    current = head;
-
-    current->songList->add(*song);
+void PlayList::add(string playlistName, SongList *musics) {
+    playlistNode *temp = new playlistNode;
+    temp->name=playlistName;
+    temp->songList=musics;
+    temp->next = head;
+    head = temp;
 }
 
 SongList PlayList::getSongListByPlaylistName(string playlistName) {
@@ -78,10 +79,13 @@ void PlayList::listAllMusicByPlaylistName(string playlistName) {
 
     while(current != NULL) {
       if(current->name.compare(playlistName) == 0) {
-          SongList *songs = current->songList;
-          songs->list();
+        current->songList->list();
       }
 
       current = current->next;
     }
+}
+
+SongList PlayList::getSongList() {
+    return *this->songList->songList;
 }

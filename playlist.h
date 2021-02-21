@@ -29,6 +29,8 @@ class PlayList {
 
         void listAll();
 
+        void add(string playlistName, SongList *songlist);
+
         void addSong(Song *song);
 
         void listAllMusicByPlaylistName(string playlistName);
@@ -38,6 +40,10 @@ class PlayList {
         string getName();
 
         void setName(string name);
+
+        SongList getSongList();
+
+        void setSongList();
 };	
   
 #endif

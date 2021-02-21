@@ -5,7 +5,7 @@
 using namespace std;
 
 void SongList::create(Song song) {
-    node *temp=new node;
+    node *temp = new node;
     temp->data = song;
     temp->next=NULL;
     
@@ -21,7 +21,7 @@ void SongList::create(Song song) {
 
 void SongList::list() {
     node *current = new node;
-    current = head;
+    current = head;   
 
     int count = 1;
 
@@ -57,7 +57,7 @@ Song SongList::findSong(string songName) {
 
     while(current != NULL) {
       if(current->data.getTitle().compare(songName) == 0) {
-          *song = current->data;
+          song = &current->data;
           return *song;
       }   
 

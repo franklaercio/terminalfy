@@ -114,7 +114,6 @@ int main() {
                             *song = songList->findSong(title);
 
                             if(!song->getTitle().empty()) {
-                                *playlistMusic = playList->getSongListByPlaylistName(namePlaylist);
                                 playlistMusic->add(*song);
                             }
 
@@ -124,7 +123,11 @@ int main() {
                     }
                 }while(addingMusic);
 
-                playList->create(namePlaylist, *playlistMusic);
+                cout << playlistMusic << endl;
+
+                playlistMusic->list();
+
+                playList->add(namePlaylist, playlistMusic);
 
                 break;
             } case 6: {

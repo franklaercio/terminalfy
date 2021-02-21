@@ -18,11 +18,13 @@ class SongList {
         SongList() {
             head = NULL;
             tail = NULL;
-        }
+        } 
         
         void create(Song song);
 
         Song findSong(string songName);
+
+        void listAllMusicBySongList(SongList *songList);
 
         void add(Song song);
 
