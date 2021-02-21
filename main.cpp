@@ -28,6 +28,7 @@ int main() {
         cout << "[4] - FIND A SONG" << endl;
         cout << "[5] - NEW PLAYLIST" << endl;
         cout << "[6] - VIEW ALL PLAYLIST" << endl;
+        cout << "[7] - LIST ALL MUSIC BY PLAYLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -85,17 +86,61 @@ int main() {
             } case 5: {
                 cout << "--------NEW PLAYLIST-------------" << endl;
 
-                cout << "Type a title: ";
+                bool addingMusic = true;
+                int playListOption = 1;
+                SongList *playlistMusic = new SongList();
+
+                cout << "Type a playlist name: ";
                 cin >> ws;
                 getline(cin,namePlaylist); 
 
-                playList->create(namePlaylist);
+                do{
+                    cout << "[0] - FINISH" << endl;
+                    cout << "[1] - ADD SONG" << endl;
+                    cout << "Type an option: ";
+                    cin >> playListOption;
+                    cout << endl;
+
+                    switch (playListOption) {
+                        case 0: {
+                            addingMusic = false;
+                            break;
+                        } case 1:  {
+                            cout << "Type a music title: ";
+                            cin >> ws;
+                            getline(cin,title);
+
+                            Song *song = new Song(); 
+                            *song = songList->findSong(title);
+
+                            if(!song->getTitle().empty()) {
+                                *playlistMusic = playList->getSongListByPlaylistName(namePlaylist);
+                                playlistMusic->add(*song);
+                            }
+
+                            break;    
+                        } default: 
+                            cout << "ERROR: type a valid option!" << endl; 
+                    }
+                }while(addingMusic);
+
+                playList->create(namePlaylist, *playlistMusic);
 
                 break;
             } case 6: {
                 cout << "--------VIEW ALL PLAYLIST-------------" << endl;
 
                 playList->listAll();
+                
+                break;
+            } case 7: {
+                cout << "--------LIST ALL MUSIC BY PLAYLIST-------------" << endl;
+
+                cout << "Type a playlist name: ";
+                cin >> ws;
+                getline(cin,namePlaylist);
+
+                playList->listAllMusicByPlaylistName(namePlaylist);
                 
                 break;
             }

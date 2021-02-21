@@ -16,21 +16,24 @@ struct playlistNode {
 class PlayList {
     private:
         string name;
-        SongList *songList;
+        playlistNode *songList;
         playlistNode *head;
         playlistNode *tail;
     public:
         PlayList() {
-            songList = new SongList();
             head = NULL;
             tail = NULL;
         }
 
-        void create(string name);
+        void create(string name, SongList songList);
 
         void listAll();
 
         void addSong(Song *song);
+
+        void listAllMusicByPlaylistName(string playlistName);
+
+        SongList getSongListByPlaylistName(string playlistName);
 
         string getName();
 
