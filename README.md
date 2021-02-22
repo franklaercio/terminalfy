@@ -46,6 +46,13 @@ make all
 9. List all music of playlist (option 9)
 10. Remove one music of playlist (option 7)
 
+### Problems
+
+1. I did not do the music consultation recursively
+2. I didn't do the play next feature
+3. In the main file I could have done the operations in small functions 
+4. When you delete a song, it is not deleted from the playlist
+
 ### Contributing
 
 Please read [CONTRIBUTING.md](http://contributing.md/) for details on our code of conduct, and the process for submitting pull requests to us.
