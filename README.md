@@ -6,14 +6,6 @@
   <a href="https://www.linkedin.com/in/frank-laercio/">
     <img alt="Made by franklaercio" src="https://img.shields.io/badge/Linkedin-Made%20by%20franklaercio-blue">
   </a>
-  
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/franklaercio/terminalfy?color=%2304D361">
-  
-  <a href="https://github.com/franklaercio/terminalfy/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/franklaercio/terminalfy">
-  </a>
-  
-  <img alt="Code size" src="https://img.shields.io/github/languages/code-size/franklaercio/terminalfy">
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
    <a href="https://github.com/franklaercio/terminalfyr/stargazers">
