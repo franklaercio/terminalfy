@@ -20,6 +20,11 @@ class SongList {
             head = NULL;
             tail = NULL;
         } 
+
+        SongList(const SongList &anotherList) {
+            SongList *newSongList =new SongList;
+            *newSongList = (anotherList);
+        }
         
         void create(Song song);
 
