@@ -95,6 +95,47 @@ void SongList::add(Song song) {
     head = temp;
 }
 
+void SongList::add(SongList *songList) {
+    bool exit = false;
+    int option;
+    string title, songwriter;
+    
+    do {
+        cout << "----------> ADDING SONGS <----------" << endl;
+        cout << "[0] - STOP " << endl;
+        cout << "[1] - ADD SONG" << endl;
+        cout << "Type an option: ";
+        cin >> option;
+        cout << endl;
+
+        switch (option) {
+        case 0:
+            exit = true;
+            break;
+        case 1: {
+            cout << "Type a title: ";
+            cin >> ws; 
+            getline(cin,title);
+
+            cout << "Type a songwriter: ";
+            cin >> ws; 
+            getline(cin,songwriter); 
+            cout << endl;
+
+            Song *song = new Song();
+            song->setTitle(title);
+            song->setSongwriter(songwriter);
+
+            songList->add(*song);
+
+            break;
+        }
+        default:
+            break;
+        }
+    } while(exit != true);
+}
+
 /**
  *  Function for remove a song in songlist
  *  
@@ -124,4 +165,21 @@ void SongList::remove(string songTitle) {
         previous->next = current->next;
         delete current;
     }
+}
+
+int SongList::getSize() {
+    node *current=new node;
+    current=head;
+
+    int size = 0;
+
+    while(current != NULL) {
+        size++;
+    }    
+
+    return size;
+}
+
+void SongList::setSize(int size) {
+    this->size = size;
 }

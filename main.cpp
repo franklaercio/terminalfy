@@ -31,6 +31,7 @@ int main() {
         cout << "[7] - REMOVE MUSIC OF PLAYLIST" << endl;
         cout << "[8] - VIEW ALL PLAYLIST" << endl;
         cout << "[9] - LIST ALL MUSIC BY PLAYLIST" << endl;
+        cout << "[10] - ADDING ONE OR MORE SONGS" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -166,6 +167,10 @@ int main() {
 
                 playList->listAllMusicByPlaylistName(namePlaylist);
                 
+                break;
+            } case 10: {
+                songList -> add(songList);
+
                 break;
             }
             default:

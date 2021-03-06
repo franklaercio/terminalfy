@@ -12,6 +12,7 @@ struct node {
 
 class SongList {
     private:
+        int size;
         node *head;
         node *tail;
     public:
@@ -28,9 +29,15 @@ class SongList {
 
         void add(Song song);
 
+        void add(SongList *songList);
+
         void remove(string songTitle);
 
         void list();
+
+        int getSize();
+
+        void setSize(int size);
 };	
   
 #endif
