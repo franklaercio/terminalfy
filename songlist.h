@@ -44,7 +44,29 @@ class SongList {
 
         int getSize();
 
-        void setSize(int size);
+        void setSize(int size); 
+
+        friend SongList* operator + (SongList const &s1, SongList const &s2) {
+            SongList *result = new SongList();
+
+            node *currentFirstList = new node;
+            currentFirstList = s1.head;   
+
+            while(currentFirstList != NULL) {
+                result->add(currentFirstList->data);
+                currentFirstList = currentFirstList->next;
+            }
+
+            node *currentSecondList = new node;
+            currentSecondList = s2.head;   
+
+            while(currentSecondList != NULL) {
+                result->add(currentSecondList->data);
+                currentSecondList = currentSecondList->next;
+            }
+
+            return result; 
+        }
 };	
   
 #endif

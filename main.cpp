@@ -33,6 +33,7 @@ int main() {
         cout << "[9] - LIST ALL MUSIC BY PLAYLIST" << endl;
         cout << "[10] - ADDING ONE OR MORE SONGS" << endl;
         cout << "[11] - DELETE ONE OR MORE SONGS" << endl;
+        cout << "[12] - OVERLOAD SONGLIST WITH OPERATION +" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -175,6 +176,29 @@ int main() {
                 break;
             } case 11: {
                 songList -> remove(songList);
+
+                break;
+            } case 12: {
+                SongList *firstList = new SongList();
+                SongList *secondList = new SongList();
+
+                cout << "----------> Adding First List <----------" << endl;
+                firstList -> add(firstList);
+
+                cout << "----------> Adding Second List <----------" << endl;
+                secondList -> add(secondList);
+
+                SongList *resultList;
+                resultList = (*firstList + *secondList);
+
+                cout << "----------> First List <----------" << endl;
+                firstList->list();
+
+                cout << "----------> Second List <----------" << endl;
+                secondList->list();
+
+                cout << "----------> First List + Second List <----------" << endl;
+                resultList->list();
 
                 break;
             }
