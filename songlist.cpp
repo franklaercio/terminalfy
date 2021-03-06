@@ -167,6 +167,38 @@ void SongList::remove(string songTitle) {
     }
 }
 
+void SongList::remove(SongList *songList) {
+    bool exit = false;
+    int option;
+    string title;
+    
+    do {
+        cout << "----------> REMOVING SONGS <----------" << endl;
+        cout << "[0] - STOP " << endl;
+        cout << "[1] - REMOVE A SONG" << endl;
+        cout << "Type an option: ";
+        cin >> option;
+        cout << endl;
+
+        switch (option) {
+        case 0:
+            exit = true;
+            break;
+        case 1: {
+            cout << "Type a title: ";
+            cin >> ws; 
+            getline(cin,title);
+
+            songList->remove(title);
+
+            break;
+        }
+        default:
+            break;
+        }
+    } while(exit != true);
+}
+
 int SongList::getSize() {
     node *current=new node;
     current=head;

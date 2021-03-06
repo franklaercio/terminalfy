@@ -33,6 +33,8 @@ class SongList {
 
         void remove(string songTitle);
 
+        void remove(SongList *songList);
+
         void list();
 
         int getSize();
