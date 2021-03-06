@@ -34,6 +34,7 @@ int main() {
         cout << "[10] - ADDING ONE OR MORE SONGS" << endl;
         cout << "[11] - DELETE ONE OR MORE SONGS" << endl;
         cout << "[12] - OVERLOAD SONGLIST WITH OPERATION +" << endl;
+        cout << "[13] - REMOVE LAST MUSIC OF SONGLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -199,6 +200,10 @@ int main() {
 
                 cout << "----------> First List + Second List <----------" << endl;
                 resultList->list();
+
+                break;
+            } case 13: {
+                *songList >> *songList;
 
                 break;
             }

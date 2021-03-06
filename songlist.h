@@ -67,6 +67,31 @@ class SongList {
 
             return result; 
         }
+
+        void operator >> (SongList const &s1) {
+            node *current=new node;
+            node *previous=new node;
+
+            current = s1.head;
+
+            while(current != NULL) {
+                if(current->next == NULL) {
+                    break;
+                }
+
+                previous = current; 
+                current = current->next;
+            }
+
+            if(current != NULL) {
+                cout << "Deleting: " << current->data.getTitle() << endl;
+                previous->next = current->next;
+
+                delete current;
+            }else{
+                cout << "Can't delete last music, bescause your songlist is empty!" << endl;
+            }
+        }
 };	
   
 #endif
