@@ -31,11 +31,13 @@ int main() {
         cout << "[7] - REMOVE MUSIC OF PLAYLIST" << endl;
         cout << "[8] - VIEW ALL PLAYLIST" << endl;
         cout << "[9] - LIST ALL MUSIC BY PLAYLIST" << endl;
-        cout << "[10] - ADDING ONE OR MORE SONGS" << endl;
-        cout << "[11] - DELETE ONE OR MORE SONGS" << endl;
+        cout << "[10] - ADDING ONE OR MORE SONGS IN SONGLIST" << endl;
+        cout << "[11] - DELETE ONE OR MORE SONGS IN SOGLIST" << endl;
         cout << "[12] - OVERLOAD SONGLIST WITH OPERATION +" << endl;
         cout << "[13] - REMOVE LAST MUSIC OF SONGLIST" << endl;
         cout << "[14] - ADDING SONG IN THE LAST OF SONGLIST" << endl;
+        cout << "[15] - ADDING ONE OR MORE SONGS IN PLAYLIST" << endl;
+        cout << "[16] - DELETE ONE OR MORE SONGS IN PLAYLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -222,6 +224,14 @@ int main() {
                 song->setSongwriter(songwiter);
 
                 songList << *song;
+
+                break;
+            } case 15: {
+                playList->add(playList, songList);
+
+                break;
+            } case 16: {
+                playList->removeSongs(playList, songList);
 
                 break;
             }

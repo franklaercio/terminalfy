@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "playlist.h"
 
 using namespace std;
@@ -62,6 +64,56 @@ void PlayList::add(string playlistName, SongList *musics) {
     temp->songList=musics;
     temp->next = head;
     head = temp;
+}
+
+void PlayList::add(PlayList *playList, SongList *songList) {
+    bool exit = false;
+    int option;
+    string title, songwriter, namePlaylist;
+
+    cout << "Type a playlist name: ";
+    cin >> ws;
+    getline(cin,namePlaylist); 
+
+    playlistNode list = playList->findPlaylistNode(namePlaylist);
+
+    if(!list.name.empty()) {
+        do{
+            cout << "----------> ADDING SONGS <----------" << endl;
+            cout << "[0] - STOP " << endl;
+            cout << "[1] - ADD SONG" << endl;
+            cout << "Type an option: ";
+            cin >> option;
+            cout << endl;
+
+            switch (option) {
+            case 0:
+                exit = true;
+
+                break;
+            case 1: {
+                cout << "Type a music title: ";
+                cin >> ws;
+                getline(cin,title);
+
+                Song *song = new Song(); 
+                *song = songList->findSong(title);
+
+                if(!song->getTitle().empty()) {
+                    list.songList->add(*song);
+                }else{
+                    cout << "Sorry! Can't found a song: " + title << endl;
+                }
+
+                break;
+            }
+            default:
+                break;
+            }
+        } while (exit != true);
+    } else {
+        cout << "Sorry! Can't found a playlist: " + namePlaylist << endl;
+    }
 }
 
 /**
@@ -133,4 +185,57 @@ playlistNode PlayList::findPlaylistNode(string playlistName) {
 
     cout << "Can't found the music." << endl;
     return *playlist;
+}
+
+void PlayList::removeSongs(PlayList *playList, SongList *songList) {
+    bool exit = false;
+    int option, count = 0;
+    string title, songwriter, namePlaylist;
+
+    cout << "Type a playlist name: ";
+    cin >> ws;
+    getline(cin,namePlaylist); 
+
+    playlistNode list = playList->findPlaylistNode(namePlaylist);
+
+    if(!list.name.empty()) {
+        do{
+            cout << "----------> REMOVING SONGS <----------" << endl;
+            cout << "[0] - STOP " << endl;
+            cout << "[1] - DELETE SONG" << endl;
+            cout << "Type an option: ";
+            cin >> option;
+            cout << endl;
+
+            switch (option) {
+            case 0:
+                exit = true;
+
+                break;
+            case 1: {
+                cout << "Type a music title: ";
+                cin >> ws;
+                getline(cin,title);
+
+                Song *song = new Song(); 
+                *song = songList->findSong(title);
+
+                if(!song->getTitle().empty()) {
+                    list.songList->remove(title);
+                    count++;
+                }else{
+                    cout << "Sorry! Can't found a song: " + title << endl;
+                }
+
+                break;
+            }
+            default:
+                break;
+            }
+        } while (exit != true);
+
+        cout << "Total of music deleted: " + count << endl;
+    } else {
+        cout << "Sorry! Can't found a playlist: " + namePlaylist << endl;
+    }
 }

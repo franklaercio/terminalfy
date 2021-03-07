@@ -25,13 +25,22 @@ class PlayList {
             tail = NULL;
         }
 
+        PlayList(const PlayList &anotherList) {
+            PlayList *newSongList =new PlayList();
+            *newSongList = (anotherList);
+        }
+
         void create(string name, SongList songList);
 
         void listAll();
 
         void add(string playlistName, SongList *songlist);
 
+        void add(PlayList *playlist, SongList *songList);
+
         void addSong(Song *song);
+
+        void removeSongs(PlayList *playList, SongList *songList);
 
         void listAllMusicByPlaylistName(string playlistName);
 
@@ -40,6 +49,11 @@ class PlayList {
         void setName(string name);
 
         playlistNode findPlaylistNode(string playlistName);
+
+        friend PlayList* operator + (PlayList const &s1, PlayList const &s2) {
+            PlayList *result = new PlayList();
+            return result; 
+        }
 };	
   
 #endif

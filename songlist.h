@@ -22,7 +22,7 @@ class SongList {
         } 
 
         SongList(const SongList &anotherList) {
-            SongList *newSongList =new SongList;
+            SongList *newSongList =new SongList();
             *newSongList = (anotherList);
         }
         
