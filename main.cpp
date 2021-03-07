@@ -40,6 +40,8 @@ int main() {
         cout << "[16] - DELETE ONE OR MORE SONGS IN PLAYLIST" << endl;
         cout << "[17] - UNION OF TWO PLAYLISTS ANOTHER REPEAT" << endl;
         cout << "[18] - CREATE A NEW PLAYLIST WITH A COPY ONE PLAYLIST AND ADD ONE MORE MUSIC" << endl;
+        cout << "[19] - CASE CREATE A PLAYLIST A - B" << endl;
+        cout << "[20] - CREATE A NEW PLAYLIST WITH DELETE ONE MUSIC" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -264,7 +266,7 @@ int main() {
                 break;
             } case 18: {
                 cout << "----------> CREATE A NEW PLAYLIST WITH A COPY ONE PLAYLIST AND ADD ONE MORE MUSIC <----------" << endl;
-                cout << "Type a playlist name of playlist one: ";
+                cout << "Type a playlist name of exists playlist: ";
                 cin >> ws;
                 getline(cin,namePlaylist); 
 
@@ -278,14 +280,64 @@ int main() {
                     playlistNode *newPlayListNode;
                     newPlayListNode = (*newPlayListNode + listNodeMusics.songList);
 
-                    cout << "main" << endl;
-                    newPlayListNode->songList->list();
-
                     playList->add(namePlaylist, newPlayListNode->songList);
                 }else{
                     cout << "Can't find a playlist, try again please!";
                 }
 
+                break;
+            } case 19: {
+                cout << "----------> CASE CREATE A PLAYLIST A - B <----------" << endl;
+                cout << "Type a playlist name of playlist one: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listOne = playList->findPlaylistNode(namePlaylist);
+
+                if(!listOne.name.empty()) {
+                    cout << "Type a playlist name of playlist two: ";
+                    cin >> ws;
+                    getline(cin,namePlaylist); 
+
+                    playlistNode listTwo = playList->findPlaylistNode(namePlaylist);
+
+                    if(!listTwo.name.empty()) {
+                        cout << "Type a playlist name for this union: ";
+                        cin >> ws;
+                        getline(cin,namePlaylist);
+
+                        playlistNode *newPlayList;
+                        newPlayList = (listOne - listTwo);
+
+                        playList->add(namePlaylist, newPlayList->songList);
+                    }else{
+                        cout << "Can't find a playlist, try again please!";
+                    }    
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
+
+                break;
+            } case 20: {
+                cout << "----------> CREATE A NEW PLAYLIST WITH DELETE ONE MUSIC <----------" << endl;
+                cout << "Type a playlist name of exists playlist: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listNodeMusics = playList->findPlaylistNode(namePlaylist);
+
+                if(!listNodeMusics.name.empty()) {
+                    cout << "Type a playlist name for new playlist: ";
+                    cin >> ws;
+                    getline(cin,namePlaylist);
+
+                    playlistNode *newPlayListNode;
+                    newPlayListNode = (*newPlayListNode - listNodeMusics.songList);
+
+                    playList->add(namePlaylist, newPlayListNode->songList);
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
                 break;
             }
             default:

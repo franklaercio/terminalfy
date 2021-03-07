@@ -46,6 +46,30 @@ struct playlistNode {
 
         return node;
     }
+
+    friend playlistNode* operator - (playlistNode const &a, playlistNode const &b) {
+        playlistNode *node = new playlistNode;
+        SongList *songList = new SongList();
+
+        songList = songList->unionTwoListAnotherRepeatMusic(a.songList, b.songList);
+        node->songList = songList;
+
+        return node;
+    }
+
+    friend playlistNode* operator - (playlistNode const &listOne, SongList *songList) {
+        playlistNode *node = new playlistNode;
+        string title;
+
+        cout << "Type a music title for remove: ";
+        cin >> ws; 
+        getline(cin,title);
+
+        songList-> remove(title);
+        node->songList = songList;
+
+        return node;
+    }
 };	
 
 class PlayList {
