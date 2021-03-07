@@ -95,6 +95,11 @@ void SongList::add(Song song) {
     head = temp;
 }
 
+/**
+ *  Function overload for add on or more musics
+ *  
+ *  @return
+*/
 void SongList::add(SongList *songList) {
     bool exit = false;
     int option;
@@ -167,6 +172,11 @@ void SongList::remove(string songTitle) {
     }
 }
 
+/**
+ *  Function overload for remove on or more musics
+ *  
+ *  @return
+*/
 void SongList::remove(SongList *songList) {
     bool exit = false;
     int option;
@@ -199,23 +209,11 @@ void SongList::remove(SongList *songList) {
     } while(exit != true);
 }
 
-int SongList::getSize() {
-    node *current=new node;
-    current=head;
-
-    int size = 0;
-
-    while(current != NULL) {
-        size++;
-    }    
-
-    return size;
-}
-
-void SongList::setSize(int size) {
-    this->size = size;
-}
-
+/**
+ *  Function overload for union two playlists another repeat music
+ *  
+ *  @return
+*/
 SongList* SongList::unionTwoListAnotherRepeatMusic(SongList *one, SongList *two) {
     SongList* newSongList = new SongList();
 
@@ -244,6 +242,11 @@ SongList* SongList::unionTwoListAnotherRepeatMusic(SongList *one, SongList *two)
     return newSongList;
 }
 
+/**
+ *  Function for delete last music of songlist
+ *  
+ *  @return
+*/
 SongList* SongList::deleteLastmusic(SongList *songList) {
     node *current=new node;
     node *previous=new node;

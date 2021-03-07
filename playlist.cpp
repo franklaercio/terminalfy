@@ -66,6 +66,11 @@ void PlayList::add(string playlistName, SongList *musics) {
     head = temp;
 }
 
+/**
+ *  Function overload for adding two playlists
+ *  
+ *  @return
+*/
 void PlayList::add(PlayList *playList, SongList *songList) {
     bool exit = false;
     int option;
@@ -187,6 +192,11 @@ playlistNode PlayList::findPlaylistNode(string playlistName) {
     return *playlist;
 }
 
+/**
+ *  Function overload for delete one or more musics
+ *  
+ *  @return
+*/
 void PlayList::removeSongs(PlayList *playList, SongList *songList) {
     bool exit = false;
     int option, count = 0;
