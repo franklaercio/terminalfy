@@ -33,7 +33,7 @@ make all
 ./terminalfy
 ```
 
-### Example of execute
+### Example of execute part 1
 
 1. Type a number option (int)
 2. Adding 3 songs (option 1)
@@ -45,6 +45,52 @@ make all
 8. Add one music at playlist (option 6)
 9. List all music of playlist (option 9)
 10. Remove one music of playlist (option 7)
+
+### Example of execute part 2
+
+1. A: Menu > Type 10 > Type 1 > Type title as teste1 > Type songwriter as teste1 > Type 1 >
+      Type title as teste2 > Type songwriter as teste2 > Type 0 > In menu type 3 for list all musics
+1. B: Menu > Type 1 > Type title as teste1 > Type songwriter as teste1 > Menu > Type 1 >
+      Type title as teste2 > Type songwriter as teste2 > Menu > Type 1 > Type title as teste3 > Type songwriter as teste3 > 
+      Menu > Type 11 > Type 1 > Type teste1 > Type 1 > Type teste3 > Type 0 > Menu > Type 3
+1. C: Test case: line 24 in songlist.h
+2. A: Menu > Tyoe 12 > Type 1 > Type title as a > Type songwriter as a > Type 1 > Type title as b > Type songwriter as b >
+      Type 0 > Type 1 > Type title as a > Type songwriter as a > Type 1 > Type title as c > Type songwriter as c >   
+2. B: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 3 > Menu > Type 13 > Menu > Type 3 
+2. C: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 3 > Menu > Type 14 > Type title as c > Type songwriter as c > Menu > Type 3
+3. A: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as c >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 5 > Type title as teste1 > Menu > Type 5 > Type title as teste2
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > Menu > Type 15 > Type teste2 > Type 1 > Type a > Type 1 > Type c > Type 0 >
+      Menu > Type 9 > Type teste1 > Menu > Type 9 > Type teste2
+3. B: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 5 > Type title as teste1 >
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 1 > Type c > Type 0 >
+      Menu > Type 9 > Type teste1 > Menu > Type 16 > Type teste1 > Type 1 > Type a > Type 1 > Type c > Type 0
+      Menu > Type 9 > Type teste1
+3. C: Test case: line 87 in playlist.h    
+4. A: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 5 > Type title as teste1 > Menu > Type 5 > Type title as teste2
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > Menu > Type 15 > Type teste2 > Type 1 > Type a > Type 1 > Type c > Type 0 >
+      Menu > Type 17 > Type teste1 > Type teste2 > Type teste3 > Menu > Type 9 > Type teste3 
+4. B: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > 
+      Menu > Type 18 > Type test1 > Type c > Menu > Type 9 > Type teste1 
+4. C: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 5 > Type title as teste1 > Menu > Type 5 > Type title as teste2
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > Menu > Type 15 > Type teste2 > Type 1 > Type a > Type 1 > Type c > Type 0 >
+      Menu > Type 19 > Type teste1 > Type teste2 > Type teste3 > Menu > Type 9 > Type teste3  
+4. D: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > 
+      Menu > Type 20 > Type test1 > Type b > Menu > Type 9 > Type teste1  
+4. E: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 > 
+      Menu > Type 21 > Type test1 > Menu > Type 9 > Type teste1  
+4. F: Menu > Type 1 > Type title as a > Type songwriter as a > Menu > Type 1 > Type title as b > Type songwriter as b >
+      Menu > Type 1 > Type title as c > Type songwriter as c > Menu > Type 5 > Type title as teste1 > Menu > Type 5 > Type title as teste2
+      Menu > Type 15 > Type teste1 > Type 1 > Type a > Type 1 > Type b > Type 0 >
+      Menu > Type 22 > Type teste1 > Type c > Menu > Type 9 > Type teste3   
 
 ### Problems
 
