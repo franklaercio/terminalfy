@@ -39,6 +39,7 @@ int main() {
         cout << "[15] - ADDING ONE OR MORE SONGS IN PLAYLIST" << endl;
         cout << "[16] - DELETE ONE OR MORE SONGS IN PLAYLIST" << endl;
         cout << "[17] - UNION OF TWO PLAYLISTS ANOTHER REPEAT" << endl;
+        cout << "[18] - CREATE A NEW PLAYLIST WITH A COPY ONE PLAYLIST AND ADD ONE MORE MUSIC" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -256,6 +257,31 @@ int main() {
                     }else{
                         cout << "Can't find a playlist, try again please!";
                     }    
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
+
+                break;
+            } case 18: {
+                cout << "----------> CREATE A NEW PLAYLIST WITH A COPY ONE PLAYLIST AND ADD ONE MORE MUSIC <----------" << endl;
+                cout << "Type a playlist name of playlist one: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listNodeMusics = playList->findPlaylistNode(namePlaylist);
+
+                if(!listNodeMusics.name.empty()) {
+                    cout << "Type a playlist name for new playlist: ";
+                    cin >> ws;
+                    getline(cin,namePlaylist);
+
+                    playlistNode *newPlayListNode;
+                    newPlayListNode = (*newPlayListNode + listNodeMusics.songList);
+
+                    cout << "main" << endl;
+                    newPlayListNode->songList->list();
+
+                    playList->add(namePlaylist, newPlayListNode->songList);
                 }else{
                     cout << "Can't find a playlist, try again please!";
                 }

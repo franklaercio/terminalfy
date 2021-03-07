@@ -21,6 +21,31 @@ struct playlistNode {
 
         return node;
     }
+
+    friend playlistNode* operator + (playlistNode const &listOne, SongList *songList) {
+        playlistNode *node = new playlistNode;
+        string title, songwiter;
+
+        cout << "Type a title: ";
+        cin >> ws; 
+        getline(cin,title);
+
+        cout << "Type a songwriter: ";
+        cin >> ws; 
+        getline(cin,songwiter); 
+        cout << endl;
+
+        Song *song = new Song();
+        song->setTitle(title);
+        song->setSongwriter(songwiter);
+
+        songList << *song;
+
+        songList = songList;
+        node->songList = songList;
+
+        return node;
+    }
 };	
 
 class PlayList {
