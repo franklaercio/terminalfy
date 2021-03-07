@@ -44,9 +44,11 @@ class SongList {
 
         int getSize();
 
-        void setSize(int size); 
+        void setSize(int size);
 
         SongList* unionTwoListAnotherRepeatMusic(SongList *one, SongList *two);
+
+        SongList* deleteLastmusic(SongList *songList);
 
         friend SongList* operator + (SongList const &s1, SongList const &s2) {
             SongList *result = new SongList();

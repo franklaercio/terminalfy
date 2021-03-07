@@ -108,6 +108,27 @@ class PlayList {
         void setName(string name);
 
         playlistNode findPlaylistNode(string playlistName);
+
+        friend PlayList* operator >> (PlayList *playlist, playlistNode const &list) {
+            playlistNode *node = new playlistNode;
+            SongList *songList = new SongList();
+
+            songList = songList->deleteLastmusic(list.songList);
+            node->songList = songList;
+
+            playlistNode *current = new playlistNode;
+            current = playlist->head;
+
+            while(current != NULL) {
+                if(current->name.compare(list.name) == 0) {
+                    current->songList = songList;
+                }  
+
+                current = current->next;
+            }
+
+            return playlist;
+        }
 };
   
 #endif

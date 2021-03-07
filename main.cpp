@@ -42,6 +42,8 @@ int main() {
         cout << "[18] - CREATE A NEW PLAYLIST WITH A COPY ONE PLAYLIST AND ADD ONE MORE MUSIC" << endl;
         cout << "[19] - CASE CREATE A PLAYLIST A - B" << endl;
         cout << "[20] - CREATE A NEW PLAYLIST WITH DELETE ONE MUSIC" << endl;
+        cout << "[21] - DELETE LAST MUSIC OF PLAYLIST" << endl;
+        cout << "[22] - ADD MUSIC OF LAST POSITION PLAYLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -338,6 +340,26 @@ int main() {
                 }else{
                     cout << "Can't find a playlist, try again please!";
                 }
+
+                break;
+            } case 21: {
+                cout << "----------> DELETE LAST MUSIC OF PLAYLIST <----------" << endl;
+                cout << "Type a playlist name of exists playlist: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listNodeMusics = playList->findPlaylistNode(namePlaylist);
+
+                if(!listNodeMusics.name.empty()) {
+                    playList >> listNodeMusics;
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
+
+                break;
+            } case 22: {
+                cout << "----------> ADD MUSIC OF LAST POSITION PLAYLIST <----------" << endl;
+
                 break;
             }
             default:

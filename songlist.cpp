@@ -243,3 +243,30 @@ SongList* SongList::unionTwoListAnotherRepeatMusic(SongList *one, SongList *two)
 
     return newSongList;
 }
+
+SongList* SongList::deleteLastmusic(SongList *songList) {
+    node *current=new node;
+    node *previous=new node;
+
+    current = songList->head;
+
+    while(current != NULL) {
+        if(current->next == NULL) {
+            break;
+        }
+
+        previous = current; 
+        current = current->next;
+    }
+
+    if(current != NULL) {
+        cout << "Deleting: " << current->data.getTitle() << endl;
+        previous->next = current->next;
+
+        delete current;
+    }else{
+        cout << "Can't delete last music, bescause your songlist is empty!" << endl;
+    }
+
+    return songList;
+}
