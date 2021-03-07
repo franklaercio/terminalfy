@@ -38,6 +38,7 @@ int main() {
         cout << "[14] - ADDING SONG IN THE LAST OF SONGLIST" << endl;
         cout << "[15] - ADDING ONE OR MORE SONGS IN PLAYLIST" << endl;
         cout << "[16] - DELETE ONE OR MORE SONGS IN PLAYLIST" << endl;
+        cout << "[17] - UNION OF TWO PLAYLISTS ANOTHER REPEAT" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -160,9 +161,7 @@ int main() {
                 break;
             } case 8: {
                 cout << "----------> VIEW ALL PLAYLIST <----------" << endl;
-
                 playList->listAll();
-                
                 break;
             } case 9: {
                 cout << "----------> LIST ALL MUSIC BY PLAYLIST <----------" << endl;
@@ -176,7 +175,6 @@ int main() {
                 break;
             } case 10: {
                 songList -> add(songList);
-
                 break;
             } case 11: {
                 songList -> remove(songList);
@@ -207,7 +205,6 @@ int main() {
                 break;
             } case 13: {
                 *songList >> *songList;
-
                 break;
             } case 14: {
                 cout << "Type a title: ";
@@ -228,10 +225,40 @@ int main() {
                 break;
             } case 15: {
                 playList->add(playList, songList);
-
                 break;
             } case 16: {
                 playList->removeSongs(playList, songList);
+                break;
+            } case 17: {
+                cout << "----------> UNION OF TWO PLAYLISTS <----------" << endl;
+                cout << "Type a playlist name of playlist one: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listOne = playList->findPlaylistNode(namePlaylist);
+
+                if(!listOne.name.empty()) {
+                    cout << "Type a playlist name of playlist two: ";
+                    cin >> ws;
+                    getline(cin,namePlaylist); 
+
+                    playlistNode listTwo = playList->findPlaylistNode(namePlaylist);
+
+                    if(!listTwo.name.empty()) {
+                        cout << "Type a playlist name for this union: ";
+                        cin >> ws;
+                        getline(cin,namePlaylist);
+
+                        playlistNode *newPlayList;
+                        newPlayList = (listOne + listTwo);
+
+                        playList->add(namePlaylist, newPlayList->songList);
+                    }else{
+                        cout << "Can't find a playlist, try again please!";
+                    }    
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
 
                 break;
             }

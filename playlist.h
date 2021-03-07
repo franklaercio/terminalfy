@@ -11,6 +11,16 @@ struct playlistNode {
     string name;
     SongList *songList;
     playlistNode *next;
+
+    friend playlistNode* operator + (playlistNode const &listOne, playlistNode const &listTwo) {
+        playlistNode *node = new playlistNode;
+        SongList *songList = new SongList();
+
+        songList = songList->unionTwoListAnotherRepeatMusic(listOne.songList, listTwo.songList);
+        node->songList = songList;
+
+        return node;
+    }
 };	
 
 class PlayList {
@@ -49,11 +59,6 @@ class PlayList {
         void setName(string name);
 
         playlistNode findPlaylistNode(string playlistName);
-
-        friend PlayList* operator + (PlayList const &s1, PlayList const &s2) {
-            PlayList *result = new PlayList();
-            return result; 
-        }
-};	
+};
   
 #endif

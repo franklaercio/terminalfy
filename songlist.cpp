@@ -215,3 +215,31 @@ int SongList::getSize() {
 void SongList::setSize(int size) {
     this->size = size;
 }
+
+SongList* SongList::unionTwoListAnotherRepeatMusic(SongList *one, SongList *two) {
+    SongList* newSongList = new SongList();
+
+    node *currentOne = new node;
+    currentOne = one->head;  
+
+    while(currentOne != NULL) {
+      newSongList->add(currentOne->data);  
+      currentOne = currentOne->next;
+    }
+
+    node *currentTwo = new node;
+    currentTwo = two->head;
+
+    while(currentTwo != NULL) {
+      Song *song = new Song();
+      *song = newSongList->findSong(currentTwo->data.getTitle());  
+
+      if(song->getTitle().empty()) {
+          newSongList->add(currentTwo->data);
+      }
+
+      currentTwo = currentTwo->next;
+    }
+
+    return newSongList;
+}
