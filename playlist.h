@@ -129,6 +129,38 @@ class PlayList {
 
             return playlist;
         }
+
+        friend PlayList* operator << (PlayList *playlist, playlistNode const &list) {
+            string title, songwiter;
+
+            cout << "Type a title: ";
+            cin >> ws; 
+            getline(cin,title);
+
+            cout << "Type a songwriter: ";
+            cin >> ws; 
+            getline(cin,songwiter); 
+            cout << endl;
+
+            Song *song = new Song();
+            song->setTitle(title);
+            song->setSongwriter(songwiter);
+
+            list.songList << *song;
+
+            playlistNode *current = new playlistNode;
+            current = playlist->head;
+
+            while(current != NULL) {
+                if(current->name.compare(list.name) == 0) {
+                    current->songList = list.songList;
+                }  
+
+                current = current->next;
+            }
+
+            return playlist;
+        }
 };
   
 #endif

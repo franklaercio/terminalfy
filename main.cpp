@@ -359,6 +359,17 @@ int main() {
                 break;
             } case 22: {
                 cout << "----------> ADD MUSIC OF LAST POSITION PLAYLIST <----------" << endl;
+                cout << "Type a playlist name of exists playlist: ";
+                cin >> ws;
+                getline(cin,namePlaylist); 
+
+                playlistNode listNodeMusics = playList->findPlaylistNode(namePlaylist);
+
+                if(!listNodeMusics.name.empty()) {
+                    playList << listNodeMusics;
+                }else{
+                    cout << "Can't find a playlist, try again please!";
+                }
 
                 break;
             }
