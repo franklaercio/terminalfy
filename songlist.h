@@ -92,6 +92,30 @@ class SongList {
                 cout << "Can't delete last music, bescause your songlist is empty!" << endl;
             }
         }
+
+        friend void operator << (SongList *list, Song const &song) {
+            node *previous=new node;
+
+            previous = list->head;
+
+            if(previous != NULL) {
+               while(previous != NULL) {
+                    if(previous->next == NULL) {
+                        break;
+                    }
+
+                    previous = previous->next;
+                }
+
+                node *temp = new node;
+                temp->data = song;
+                temp->next = NULL;
+
+                previous->next = temp;
+            }else{
+                list->add(song);
+            }
+        }    
 };	
   
 #endif

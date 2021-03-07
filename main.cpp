@@ -35,6 +35,7 @@ int main() {
         cout << "[11] - DELETE ONE OR MORE SONGS" << endl;
         cout << "[12] - OVERLOAD SONGLIST WITH OPERATION +" << endl;
         cout << "[13] - REMOVE LAST MUSIC OF SONGLIST" << endl;
+        cout << "[14] - ADDING SONG IN THE LAST OF SONGLIST" << endl;
         cout << "Type an option: ";
         cin >> option;
         cout << endl;
@@ -204,6 +205,23 @@ int main() {
                 break;
             } case 13: {
                 *songList >> *songList;
+
+                break;
+            } case 14: {
+                cout << "Type a title: ";
+                cin >> ws; 
+                getline(cin,title);
+
+                cout << "Type a songwriter: ";
+                cin >> ws; 
+                getline(cin,songwiter); 
+                cout << endl;
+
+                Song *song = new Song();
+                song->setTitle(title);
+                song->setSongwriter(songwiter);
+
+                songList << *song;
 
                 break;
             }
